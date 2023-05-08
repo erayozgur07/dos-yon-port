@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TDosyaKayit">
+    <Key>
+      <PropertyRef Name="dkId" />
+    </Key>
+    <Property Name="dkId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dkDersId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dkDosyaId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TDosyalar">
+    <Key>
+      <PropertyRef Name="dosyaId" />
+    </Key>
+    <Property Name="dosyaId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dosyaAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="dosyaFoto" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TKullanici">
+    <Key>
+      <PropertyRef Name="kulId" />
+    </Key>
+    <Property Name="kulId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kulAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kulSifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kulYetki" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="kulOgrId" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TDosyaKayit_TDosyalar">
+    <End Role="TDosyalar" Type="Self.TDosyalar" Multiplicity="1" />
+    <End Role="TDosyaKayit" Type="Self.TDosyaKayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDosyalar">
+        <PropertyRef Name="dosyaId" />
+      </Principal>
+      <Dependent Role="TDosyaKayit">
+        <PropertyRef Name="dkDosyaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB01ModelStoreContainer">
+    <EntitySet Name="TDosyaKayit" EntityType="Self.TDosyaKayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TDosyalar" EntityType="Self.TDosyalar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TKullanici" EntityType="Self.TKullanici" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TDosyaKayit_TDosyalar" Association="Self.FK_TDosyaKayit_TDosyalar">
+      <End Role="TDosyalar" EntitySet="TDosyalar" />
+      <End Role="TDosyaKayit" EntitySet="TDosyaKayit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

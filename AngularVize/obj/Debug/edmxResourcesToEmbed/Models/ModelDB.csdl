@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DB01Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TDosyaKayit" EntityType="DB01Model.TDosyaKayit" />
+    <EntitySet Name="TDosyalar" EntityType="DB01Model.TDosyalar" />
+    <EntitySet Name="TKullanici" EntityType="DB01Model.TKullanici" />
+    <AssociationSet Name="FK_TDosyaKayit_TDosyalar" Association="DB01Model.FK_TDosyaKayit_TDosyalar">
+      <End Role="TDosyalar" EntitySet="TDosyalar" />
+      <End Role="TDosyaKayit" EntitySet="TDosyaKayit" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TDosyaKayit">
+    <Key>
+      <PropertyRef Name="dkId" />
+    </Key>
+    <Property Name="dkId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dkDersId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dkDosyaId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TDosyalar" Relationship="DB01Model.FK_TDosyaKayit_TDosyalar" FromRole="TDosyaKayit" ToRole="TDosyalar" />
+  </EntityType>
+  <EntityType Name="TDosyalar">
+    <Key>
+      <PropertyRef Name="dosyaId" />
+    </Key>
+    <Property Name="dosyaId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dosyaAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dosyaFoto" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="TDosyaKayit" Relationship="DB01Model.FK_TDosyaKayit_TDosyalar" FromRole="TDosyalar" ToRole="TDosyaKayit" />
+  </EntityType>
+  <EntityType Name="TKullanici">
+    <Key>
+      <PropertyRef Name="kulId" />
+    </Key>
+    <Property Name="kulId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kulAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kulSifre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kulYetki" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kulOgrId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_TDosyaKayit_TDosyalar">
+    <End Type="DB01Model.TDosyalar" Role="TDosyalar" Multiplicity="1" />
+    <End Type="DB01Model.TDosyaKayit" Role="TDosyaKayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TDosyalar">
+        <PropertyRef Name="dosyaId" />
+      </Principal>
+      <Dependent Role="TDosyaKayit">
+        <PropertyRef Name="dkDosyaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

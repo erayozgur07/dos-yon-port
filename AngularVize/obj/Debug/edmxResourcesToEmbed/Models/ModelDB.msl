@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB01ModelStoreContainer" CdmEntityContainer="DB01Entities">
+    <EntitySetMapping Name="TDosyaKayit">
+      <EntityTypeMapping TypeName="DB01Model.TDosyaKayit">
+        <MappingFragment StoreEntitySet="TDosyaKayit">
+          <ScalarProperty Name="dkDosyaId" ColumnName="dkDosyaId" />
+          <ScalarProperty Name="dkDersId" ColumnName="dkDersId" />
+          <ScalarProperty Name="dkId" ColumnName="dkId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TDosyalar">
+      <EntityTypeMapping TypeName="DB01Model.TDosyalar">
+        <MappingFragment StoreEntitySet="TDosyalar">
+          <ScalarProperty Name="dosyaFoto" ColumnName="dosyaFoto" />
+          <ScalarProperty Name="dosyaAdi" ColumnName="dosyaAdi" />
+          <ScalarProperty Name="dosyaId" ColumnName="dosyaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TKullanici">
+      <EntityTypeMapping TypeName="DB01Model.TKullanici">
+        <MappingFragment StoreEntitySet="TKullanici">
+          <ScalarProperty Name="kulOgrId" ColumnName="kulOgrId" />
+          <ScalarProperty Name="kulYetki" ColumnName="kulYetki" />
+          <ScalarProperty Name="kulSifre" ColumnName="kulSifre" />
+          <ScalarProperty Name="kulAdi" ColumnName="kulAdi" />
+          <ScalarProperty Name="kulId" ColumnName="kulId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
